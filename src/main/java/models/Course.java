@@ -1,46 +1,58 @@
 package models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name="Course")
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
-    private String name;
-    private String instructor;
+    @Column(name = "cId", nullable = false)
+    private int cId;
+    private String cName;
+    private String cInstructorName;
+    @ManyToMany (cascade = CascadeType.ALL)
+    private List<Student> studentList;
+
+    public List<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
+    }
 
     public Course() {
     }
 
-    public Course(Long id, String name, String instructor) {
-        this.id = id;
-        this.name = name;
-        this.instructor = instructor;
+    public Course(int cId, String cName, String cInstructorName) {
+        this.cId = cId;
+        this.cName = cName;
+        this.cInstructorName = cInstructorName;
     }
 
-    public String getName() {
-        return name;
+    public int getcId() {
+        return cId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setcId(int cId) {
+        this.cId = cId;
     }
 
-    public String getInstructor() {
-        return instructor;
+    public String getcName() {
+        return cName;
     }
 
-    public void setInstructor(String instructor) {
-        this.instructor = instructor;
+    public void setcName(String cName) {
+        this.cName = cName;
     }
 
-    public Long getId() {
-        return id;
+    public String getcInstructorName() {
+        return cInstructorName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setcInstructorName(String cInstructorName) {
+        this.cInstructorName = cInstructorName;
     }
 }

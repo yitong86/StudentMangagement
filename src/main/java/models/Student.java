@@ -1,59 +1,76 @@
 package models;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
+@Table(name="Student")
+
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    private String sEmail;
+
+    private String sName;
+
+    private  String sPass;
+
+   // @ManyToMany(targetEntity = Course.class)
+  @ManyToMany (cascade = CascadeType.ALL)
+   private List<Course> sCourses;
 
 
-
-    private String name;
-    private String email;
-    private  String password;
 
     public Student() {
     }
 
-    public Student(Long id, String name, String email, String password) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
+    public Student(String sEmail, String sName, String sPass) {
+        this.sEmail = sEmail;
+        this.sName = sName;
+        this.sPass = sPass;
     }
 
-    public String getName() {
-        return name;
+    public Student(String sName, String sEmail, String sPass, List<Course> sCourses) {
+        this.sName = sName;
+        this.sEmail = sEmail;
+        this.sPass = sPass;
+        this.sCourses = sCourses;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public List<Course> getsCourses() {
+        return sCourses;
     }
 
-    public String getEmail() {
-        return email;
+    public void setsCourses(List<Course> sCourses) {
+        this.sCourses = sCourses;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getsName() {
+        return sName;
     }
 
-    public String getPassword() {
-        return password;
+    public void setsName(String sName) {
+        this.sName = sName;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getsEmail() {
+        return sEmail;
     }
 
-    public Long getId() {
-        return id;
+    public void setsEmail(String sEmail) {
+        this.sEmail = sEmail;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getsPass() {
+        return sPass;
     }
+
+    public void setsPass(String sPass) {
+        this.sPass = sPass;
+    }
+
+public void addCourse(Course course){
+        this.sCourses.add(course);
+}
+
 }
