@@ -13,7 +13,7 @@ public class ConnectionDao {
         final String  DBPASSWORD = "password";
         try {
             con = DriverManager.getConnection(DBURL, DBUSERNAME, DBPASSWORD);
-            System.out.println("Connected Database Successfully");
+           // System.out.println("Connected Database Successfully");
         }
         catch (SQLException e) {
             System.out.println(e);

@@ -1,6 +1,7 @@
 package jpa.dao;
 
 import models.Course;
+import models.CourseRegisterKey;
 import models.Student;
 
 import java.sql.SQLException;
@@ -12,7 +13,7 @@ public interface StudentDao {
 
     boolean validateStudent(List<Student> studentList,String studentEmail, String studentPass) throws SQLException, ClassNotFoundException;
 
-    void registerStudentToCourse(String studentEmail,int courseId) throws SQLException, ClassNotFoundException;
+    void registerStudentToCourse(List<CourseRegisterKey> courseRegisterKeys, String studentEmail, int courseId) throws SQLException, ClassNotFoundException;
 
-    List<Course> getStudentCourses(String email,int id);
+    List<Course> getStudentCourses(List<Course> courseList, List<CourseRegisterKey> courseRegisterKeys,String email);
 }

@@ -64,6 +64,7 @@ public class SMSRunner {
                       //  out.println(regiCourse);
                         newList.add(regiCourse);
 
+
                     }
 
                 }

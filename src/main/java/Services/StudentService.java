@@ -4,6 +4,7 @@ import jpa.dao.ConnectionDao;
 import jpa.dao.CourseDao;
 import jpa.dao.StudentDao;
 import models.Course;
+import models.CourseRegisterKey;
 import models.Student;
 
 import java.sql.Connection;
@@ -16,7 +17,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class StudentService extends ConnectionDao implements StudentDao {
-
+    private CourseRegisterKey courses;
 
     @Override
     public List<Student> getAllStudents() throws ClassNotFoundException, SQLException {
@@ -72,19 +73,38 @@ public class StudentService extends ConnectionDao implements StudentDao {
     }
 
 
-
-
     @Override
-    public void registerStudentToCourse(String studentEmail, int courseId) throws SQLException, ClassNotFoundException {
-        Connection connection = ConnectionDao.getConnection();
-        Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("INSERT INTO student_courseVALUES('\" + studentEmail + \"','\" + courseId + \"')");
+    public void registerStudentToCourse(List<CourseRegisterKey> courseRegisterKeys, String studentEmail, int courseId) {
+//check if a student with this email is already registered the course with cId
+        //if not, add to the join table
+        for (CourseRegisterKey i : courseRegisterKeys) {
+            if (i.getsEmail().equals(studentEmail) && i.getcId() == (courseId)) {
+                return;
+            }
+        }
+        CourseRegisterKey courseRegisterKey = new CourseRegisterKey();
+        courseRegisterKey.setsEmail(studentEmail);
+        courseRegisterKey.setcId(courseId);
+        courseRegisterKeys.add(courseRegisterKey);
 
     }
 
     @Override
-    public List<Course> getStudentCourses(String email, int id) {
-        return null;
-    }
+    public List<Course> getStudentCourses(List<Course> courseList, List<CourseRegisterKey> courseRegisterKeys, String sEmail) {
+        List<Course> newCourses = new ArrayList<>();
+        for (CourseRegisterKey i : courseRegisterKeys) {
+            if (i.getsEmail().equals(sEmail)) {
+//check id match
+                for (Course j : courseList) {
+                    if (j.getcId() == i.getcId()) {
+                        newCourses.add(j);
 
+                    }
+                }
+            }
+        }
+
+        return newCourses;
+
+    }
 }
