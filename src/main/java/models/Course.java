@@ -5,6 +5,8 @@ import java.util.List;
 
 @Entity
 @Table(name="Course")
+
+//@NamedQuery(name="getAllCourses", query="select * from course")
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,16 +14,10 @@ public class Course {
     private int cId;
     private String cName;
     private String cInstructorName;
-    @ManyToMany (cascade = CascadeType.ALL)
-    private List<Student> studentList;
 
-    public List<Student> getStudentList() {
-        return studentList;
-    }
 
-    public void setStudentList(List<Student> studentList) {
-        this.studentList = studentList;
-    }
+@ManyToMany(mappedBy = "sCourses")
+private List<Student> studentList;
 
     public Course() {
     }
@@ -54,5 +50,14 @@ public class Course {
 
     public void setcInstructorName(String cInstructorName) {
         this.cInstructorName = cInstructorName;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "cId=" + cId +
+                ", cName='" + cName + '\'' +
+                ", cInstructorName='" + cInstructorName + '\'' +
+                '}';
     }
 }

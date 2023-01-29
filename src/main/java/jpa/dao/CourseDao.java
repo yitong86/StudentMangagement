@@ -7,5 +7,5 @@ import java.sql.SQLException;
 
 public interface CourseDao {
    List<Course> getAllCourses() throws ClassNotFoundException, SQLException;
-  // Course getCourseById(int id) throws SQLException;
+
 }

@@ -28,6 +28,7 @@ public class SMSRunner {
         if (answer == 1){
 
        StudentService studentDAO = new StudentService();
+
         List<Student> studentList = studentDAO.getAllStudents();
 
 
@@ -38,35 +39,37 @@ public class SMSRunner {
         String password = in.nextLine();
 
         if (studentDAO.validateStudent(studentList, email, password)) {
-            CourseService courseDAO = new CourseService();
-         //   AttendingDAO attendingDAO = new AttendingDAO();
-            Student student = studentDAO.getStudentByEmail(studentList, email);
-            List<Course> courseList = courseDAO.getAllCourses();
-           // List<Attending> attendingList = attendingDAO.getAttending();
+          Student student = studentDAO.getStudentByEmail(studentList, email);
 
-          //  myClasses(student, courseList, attendingList);
+
 
 
             System.out.println("1. Register to Class");
             System.out.println("2. LogOut");
-            System.out.print("Answer: \n");
+            System.out.println("Please, enter 1 or 2. " );
             answer = in.nextInt();
 
             if (answer == 1) {
                 //Display all courses
-
+                CourseService courseDAO = new CourseService();
+                List<Course> courseList = courseDAO.getAllCourses();
                 allCourses(courseList);
                 System.out.println("Which Course?");
 
                 int courseID = in.nextInt();
+                List<Course> newList = new ArrayList<>();
+                for(int i = 0;i<courseList.size();i++){
+                    if(courseList.get(i).getcId()== courseID){
+                     Course regiCourse = courseList.get(i);
+                      //  out.println(regiCourse);
+                        newList.add(regiCourse);
 
-             //   courseDAO.getCourseById(courseID);
-        studentDAO.getStudentCourses(courseID);
-                myClasses(student,courseList);
-//                CourseService cs = new CourseService();
-//                Course course = cs.getAllCourses().get(courseID);
-//                courseList.add(course);
-//                myClasses(student,courseList);
+                    }
+
+                }
+                //out.println(Arrays.toString(newList.toArray()));
+
+                myClasses(student,newList);
             }
 
             System.out.println("You have been signed out.\n" +
@@ -85,14 +88,9 @@ public class SMSRunner {
 
         System.out.println("My Classes: ");
         System.out.printf("%-5s|%-25s|%-25s", "#", "COURSE NAME", "INSTRUCTOR NAME \n");
-       // AttendingDAO attendingDAO = new AttendingDAO();
-       // List<Course> courses = attendingDAO.getStudentCourses(courseList, attendingList, student.getEmail());
-        StudentService studentDAO = new StudentService();
-        CourseService coursesDAO = new CourseService();
-      //  student = studentDAO.getStudentCourses();
-        List<Course> courses = coursesDAO.getAllCourses();
+        out.println();
 
-        for(Course course : courses) {
+        for(Course course : courseList) {
             System.out.printf("%-5s|%-25s|%-25s\n", course.getcId(),course.getcName(),course.getcInstructorName());
 
         }
@@ -102,6 +100,7 @@ public class SMSRunner {
 
         System.out.println("All course: ");
         System.out.printf("%-5s|%-25s|%-25s", "#", "COURSE NAME", "INSTRUCTOR NAME \n");
+        out.println();
         for(Course course : courseList){
             System.out.printf("%-5s|%-25s|%-25s\n", course.getcId(),course.getcName(),course.getcInstructorName());
 

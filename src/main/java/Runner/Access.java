@@ -134,11 +134,11 @@ List<Student> studentList = new ArrayList<>();
         studentList.add(s9);
         studentList.add(s10);
 
-for(int i = 0;i<CourseList1.size();i++){
-    for(int j = 0;j<studentList.size();j++){
-        System.out.println("Course name "+studentList.get(i).getsCourses());
-    }
-        }
+//for(int i = 0;i<CourseList1.size();i++){
+//    for(int j = 0;j<studentList.size();j++){
+//        System.out.println("Course name "+studentList.get(i).getsCourses());
+//    }
+//        }
 
 
 

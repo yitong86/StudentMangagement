@@ -1,6 +1,7 @@
 package Services;
 
 import jpa.dao.ConnectionDao;
+import jpa.dao.CourseDao;
 import jpa.dao.StudentDao;
 import models.Course;
 import models.Student;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class StudentService extends ConnectionDao implements StudentDao {
@@ -60,7 +62,7 @@ public class StudentService extends ConnectionDao implements StudentDao {
     public boolean validateStudent(List<Student> studentList, String studentEmail, String studentPass) {
         for (Student student : studentList) {
             if (student.getsEmail().equals(studentEmail) && student.getsPass().equals(studentPass)) {
-                ;
+
                 return true;
             }
 
@@ -69,53 +71,20 @@ public class StudentService extends ConnectionDao implements StudentDao {
         return false;
     }
 
-//
-//    @Override
-//    public void registerStudentToCourse(String studentEmail, int courseId) throws SQLException, ClassNotFoundException {
-//        String sqlStatement = "INSERT INTO StudentRegistration VALUES('" + studentEmail + "','" + courseId + "')";
-//    }
-//
-//    @Override
-//    public List<Course> getStudentCourses(String studentEmail) {
-//        return null;
-//    }
+
 
 
     @Override
     public void registerStudentToCourse(String studentEmail, int courseId) throws SQLException, ClassNotFoundException {
+        Connection connection = ConnectionDao.getConnection();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("INSERT INTO student_courseVALUES('\" + studentEmail + \"','\" + courseId + \"')");
 
     }
 
     @Override
-    public Course getStudentCourses(int id) {
-//one student get course by id
-        Course c = new Course();
-        Student s = new Student();
-        List<Course> list = new ArrayList<>();
-        try {
-            Connection connection = ConnectionDao.getConnection();
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM course where cId =?");
-
-            while(rs.next())
-            {
-                c.setcId(rs.getInt("cId"));
-                c.setcName(rs.getString("cName"));
-                c.setcInstructorName(rs.getString("cInstructorName"));
-
-
-            }
-
-            return c;
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            System.err.format("SQL State: %s\n%s", ex.getSQLState(), ex.getMessage());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+    public List<Course> getStudentCourses(String email, int id) {
         return null;
     }
-
 
 }

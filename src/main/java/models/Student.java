@@ -15,8 +15,9 @@ public class Student {
 
     private  String sPass;
 
-   // @ManyToMany(targetEntity = Course.class)
+
   @ManyToMany (cascade = CascadeType.ALL)
+  @JoinTable(name = "student_courses",joinColumns = {@JoinColumn(name = "s_email")},inverseJoinColumns = {@JoinColumn(name ="c_id")})
    private List<Course> sCourses;
 
 
@@ -30,21 +31,18 @@ public class Student {
         this.sPass = sPass;
     }
 
-    public Student(String sName, String sEmail, String sPass, List<Course> sCourses) {
-        this.sName = sName;
-        this.sEmail = sEmail;
-        this.sPass = sPass;
-        this.sCourses = sCourses;
-    }
 
-    public List<Course> getsCourses() {
-        return sCourses;
-    }
 
-    public void setsCourses(List<Course> sCourses) {
-        this.sCourses = sCourses;
-    }
-
+//    public List<Course> getsCourses() {
+//        return sCourses;
+//    }
+//
+//    public void setsCourses(List<Course> sCourses) {
+//        this.sCourses = sCourses;
+//    }
+//    public void setCourses(Course course){
+//        sCourses.add(course);
+//    }
     public String getsName() {
         return sName;
     }
@@ -69,8 +67,6 @@ public class Student {
         this.sPass = sPass;
     }
 
-public void addCourse(Course course){
-        this.sCourses.add(course);
-}
+
 
 }
