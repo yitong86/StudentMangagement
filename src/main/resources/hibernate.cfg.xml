@@ -19,5 +19,6 @@
         <mapping class="models.Student"/>
         <mapping class="models.Course"/>
 
+
     </session-factory>
 </hibernate-configuration>

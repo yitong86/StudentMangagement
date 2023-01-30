@@ -135,7 +135,6 @@ List<Student> studentList = new ArrayList<>();
         studentList.add(s10);
 
 
-
         t.commit();
         factory.close();
         session.close();

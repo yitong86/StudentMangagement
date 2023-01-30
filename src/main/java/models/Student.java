@@ -55,6 +55,13 @@ public class Student {
         this.sPass = sPass;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Student{" +
+                "sEmail='" + sEmail + '\'' +
+                ", sName='" + sName + '\'' +
+                ", sPass='" + sPass + '\'' +
+                ", sCourses=" + sCourses +
+                '}';
+    }
 }

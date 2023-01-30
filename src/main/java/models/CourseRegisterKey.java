@@ -1,12 +1,14 @@
 package models;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.io.Serializable;
 @Embeddable
+
 public class CourseRegisterKey implements Serializable {
+
     @Column(name = "s_email")
     String sEmail;
+
     @Column(name = "c_id")
     int cId;
 
@@ -35,5 +37,8 @@ public class CourseRegisterKey implements Serializable {
                 "sEmail='" + sEmail + '\'' +
                 ", cId=" + cId +
                 '}';
+    }
+    public void save(){
+
     }
 }
