@@ -31,18 +31,6 @@ public class Student {
         this.sPass = sPass;
     }
 
-
-
-//    public List<Course> getsCourses() {
-//        return sCourses;
-//    }
-//
-//    public void setsCourses(List<Course> sCourses) {
-//        this.sCourses = sCourses;
-//    }
-//    public void setCourses(Course course){
-//        sCourses.add(course);
-//    }
     public String getsName() {
         return sName;
     }

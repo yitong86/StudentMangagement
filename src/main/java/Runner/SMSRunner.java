@@ -4,10 +4,9 @@ import Services.CourseService;
 import Services.StudentService;
 import jpa.dao.StudentDao;
 import models.Course;
+import models.CourseRegisterKey;
 import models.Student;
-
 import static java.lang.System.out;
-
 import java.sql.SQLException;
 import java.util.*;
 
@@ -41,9 +40,6 @@ public class SMSRunner {
         if (studentDAO.validateStudent(studentList, email, password)) {
           Student student = studentDAO.getStudentByEmail(studentList, email);
 
-
-
-
             System.out.println("1. Register to Class");
             System.out.println("2. LogOut");
             System.out.println("Please, enter 1 or 2. " );
@@ -69,7 +65,8 @@ public class SMSRunner {
 
                 }
                 //out.println(Arrays.toString(newList.toArray()));
-
+                List<CourseRegisterKey> courseRegisterKeys = new ArrayList<>();
+                studentDAO.registerStudentToCourse(courseRegisterKeys,email,courseID);
                 myClasses(student,newList);
             }
 
@@ -82,25 +79,24 @@ public class SMSRunner {
         }
     }
 
-        System.out.println("Goodbye.");
+        System.out.println("Thank you for your register. Goodbye.");
 }
 
-    public static void myClasses (Student student, List<Course> courseList) throws SQLException, ClassNotFoundException {
+    public static void myClasses (Student student, List<Course> courseList) {
 
         System.out.println("My Classes: ");
-        System.out.printf("%-5s|%-25s|%-25s", "#", "COURSE NAME", "INSTRUCTOR NAME \n");
+        System.out.printf("%-5s|%-25s|%-25s", "#", "Course Name", "Instructor Name \n");
         out.println();
 
         for(Course course : courseList) {
             System.out.printf("%-5s|%-25s|%-25s\n", course.getcId(),course.getcName(),course.getcInstructorName());
-
         }
     }
 
     public static void allCourses (List<Course> courseList) {
 
         System.out.println("All course: ");
-        System.out.printf("%-5s|%-25s|%-25s", "#", "COURSE NAME", "INSTRUCTOR NAME \n");
+        System.out.printf("%-5s|%-25s|%-25s", "#", "Course Name", "Instructor Name \n");
         out.println();
         for(Course course : courseList){
             System.out.printf("%-5s|%-25s|%-25s\n", course.getcId(),course.getcName(),course.getcInstructorName());
