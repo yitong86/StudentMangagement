@@ -139,27 +139,7 @@ public class StudentService extends ConnectionDao implements StudentDao {
         }
         return courses;
     }
-//    public void save(List<StudentCoursesID> ItemList) {
-//        try {
-//            Connection con = ConnectionDao.getConnection();
-//            for(StudentCoursesID i : ItemList) {
-//                String sqlQuery = "INSERT INTO student_courses (s_email,c_id) VALUES (?,?)";
-//                PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
-//                prepStmt.setString(1,  i.geteMail());
-//                prepStmt.setInt(2, i.getCourseID());
-//
-//
-//                int affectedRows = prepStmt.executeUpdate();
-//                System.out.println(affectedRows + " row(s) affected !!");
-//            }
-//        }
-//        catch (ClassNotFoundException ignored)
-//        {
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
-//    }
-
-
-
 }
+
+
+

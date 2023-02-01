@@ -52,7 +52,7 @@ public class SMSRunner {
                 }
 
                 //current student info
-                //   out.println(currentStudent.toString());
+                //out.println(currentStudent.toString());
                 //Student{sEmail='aiannitti7@is.gd', sName='Alexandra Iannitti', sPass='TWP4hf5j', sCourses=null}
 
                 System.out.println("1. Register to Class");
