@@ -13,7 +13,7 @@ public interface StudentDao {
 
     boolean validateStudent(List<Student> studentList ,String studentEmail, String studentPass) throws SQLException, ClassNotFoundException;
 
-    List<StudentCoursesID> registerStudentToCourse(List<StudentCoursesID> studentCoursesID, String studentEmail, int courseId) throws SQLException, ClassNotFoundException;
+    public void registerStudentToCourse(String studentEmail, int courseId) throws SQLException, ClassNotFoundException;
 
-    List<Course> getStudentCourses(List<StudentCoursesID> studentCoursesIDS, String sEmail, List<Course> list);
+    List<Course> getStudentCourses(List<Course> courseList,String email, List<StudentCoursesID> list)  throws SQLException, ClassNotFoundException;
 }

@@ -3,10 +3,9 @@ package Services;
 import jpa.dao.ConnectionDao;
 import jpa.dao.CourseDao;
 import models.Course;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import models.StudentCoursesID;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +40,27 @@ public class CourseService extends ConnectionDao implements CourseDao {
     }
 
 
-
+//    public void save(List<Course> courseList) {
+//        try {
+//            Connection con = ConnectionDao.getConnection();
+//            for(Course i : courseList) {
+//                String sqlQuery = "INSERT INTO student_courses (s_email,c_id) VALUES (?,?)";
+//                PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
+//                prepStmt.setInt(1,  i.getcId());
+//                prepStmt.setString(1,  i.getcName());
+//                prepStmt.setString(2, i.getcInstructorName());
+//
+//
+//                int affectedRows = prepStmt.executeUpdate();
+//                System.out.println(affectedRows + " row(s) affected !!");
+//            }
+//        }
+//        catch (ClassNotFoundException e)
+//        {
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+//    }
     }
 
 
