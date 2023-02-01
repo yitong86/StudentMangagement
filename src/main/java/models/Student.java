@@ -19,8 +19,20 @@ public class Student {
   @ManyToMany (cascade = CascadeType.ALL)
   @JoinTable(name = "student_courses",joinColumns = {@JoinColumn(name = "s_email")},inverseJoinColumns = {@JoinColumn(name ="c_id")})
    private List<Course> sCourses;
+    public void addCourse(Course course) {
+        sCourses.add(course);
+    }
 
+    public void removeCourse(Course course) {
+        sCourses.remove(course);
+    }
+    public List<Course> getsCourses() {
+        return sCourses;
+    }
 
+    public void setsCourses(List<Course> sCourses) {
+        this.sCourses = sCourses;
+    }
 
     public Student() {
     }

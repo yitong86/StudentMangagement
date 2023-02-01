@@ -86,8 +86,6 @@ public class StudentService extends ConnectionDao implements StudentDao {
         PreparedStatement stmt = con.prepareStatement(sqlQuery);
 
         try {
-
-
             stmt.setString(1, studentEmail);
             stmt.setInt(2, courseId);
             rs = stmt.executeQuery();
@@ -139,7 +137,7 @@ public class StudentService extends ConnectionDao implements StudentDao {
         }
         return courses;
     }
+
+
 }
-
-
 

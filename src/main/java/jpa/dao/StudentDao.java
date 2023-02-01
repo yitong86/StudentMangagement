@@ -16,4 +16,5 @@ public interface StudentDao {
     public void registerStudentToCourse(String studentEmail, int courseId) throws SQLException, ClassNotFoundException;
 
     List<Course> getStudentCourses(List<Course> courseList,String email, List<StudentCoursesID> list)  throws SQLException, ClassNotFoundException;
+
 }

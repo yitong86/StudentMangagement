@@ -22,7 +22,7 @@ public class StudentCoursesID implements Serializable {
 	public StudentCoursesID() {
 	}
 
-	public StudentCoursesID(String email, String courseId) {
+	public StudentCoursesID(String email, int courseId) {
 		this.seteMail(email);
 		this.setCourseID(courseID);
 	}

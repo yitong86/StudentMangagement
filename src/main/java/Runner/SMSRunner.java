@@ -74,7 +74,7 @@ public class SMSRunner {
                     for (int i = 0; i < courseList.size(); i++) {
                         if (courseList.get(i).getcId() == courseID) {
                             Course regiCourse = courseList.get(i);
-                          //  out.println(regiCourse);
+                            //  out.println(regiCourse);
                             newList.add(regiCourse);
 
                         }
@@ -83,24 +83,24 @@ public class SMSRunner {
                     myClasses(currentStudent, newList);
                     out.println();
 
-                 studentDAO.registerStudentToCourse(currentStudent.getsEmail(), courseID);
+                    studentDAO.registerStudentToCourse(currentStudent.getsEmail(), courseID);
 
 
-                 List<StudentCoursesID> studentCoursesIDS = new ArrayList<>();
+                    List<StudentCoursesID> studentCoursesIDS = new ArrayList<>();
 
                     studentDAO.getStudentCourses(newList,email,studentCoursesIDS);
 
-                    }
-                    System.out.println("You have been signed out.\n" +
-                            "\n" +
-                            " ");
-                } else {
-                    System.out.println("Invalid Email or Password.");
                 }
+                System.out.println("You have been signed out.\n" +
+                        "\n" +
+                        " ");
+            } else {
+                System.out.println("Invalid Email or Password.");
             }
-
-            System.out.println("Thank you for your register. Goodbye.");
         }
+
+        System.out.println("Thank you for your register. Goodbye.");
+    }
 
     public static void myClasses (Student student, List<Course> courseList) {
 
